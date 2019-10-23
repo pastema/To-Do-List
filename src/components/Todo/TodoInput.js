@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Input, Button } from 'antd';
 export default class TodoInput extends Component {
   state = {
-    inputValue: ''
+    inputValue: '',
   };
 
   handleInputChange = (event) => {
@@ -11,13 +11,12 @@ export default class TodoInput extends Component {
 
   dispatch = () => {
     this.props.onNewTodoAdded(this.state.inputValue);
-    // console.log("CHECK IF ITO MAUNA LUMABAS");
     this.setState({inputValue: ''})
   };
 
   render() {
     return (
-      <div className="todo-input" >
+      <div >
         <Input type="text" value={this.state.inputValue} onChange={this.handleInputChange} />
         <Button onClick={this.dispatch}>add</Button>
       </div>

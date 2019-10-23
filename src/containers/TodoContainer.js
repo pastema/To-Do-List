@@ -26,10 +26,16 @@ const mapDispatchToProps =  dispatch => ({
         })
       })
   },
-  patchNewTodo: (status,id) => {
-    console.log("patchNewTodo: " + status+" "+id);
-    TodoResource.patchTodo(status,id)
+  patchNewTodo: (status,id,content) => {
+    // console.log("patchNewTodo: " + status+" "+id+" "+content);
+    TodoResource.patchTodo(status,id,content)
     .then(res => res.json())
+    .then(({id,status,content}) => {
+        dispatch({
+          type: 'UPDATE_TODO',
+          payload: {id,content,status}
+        })
+    })
   },
   refreshTodos: todos => dispatch({
     type: 'REFRESH_TODOS',
